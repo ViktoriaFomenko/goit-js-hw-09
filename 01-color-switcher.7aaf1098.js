@@ -1,0 +1,2 @@
+var body=document.querySelector("body"),btnStart=document.querySelector("[data-start]"),btnStop=document.querySelector("[data-stop"),timeoutId=null;function getRandomHexColor(){return"#".concat(Math.floor(16777215*Math.random()).toString(16))}timeoutId=changeColor=function(){setTimeout((function(){body.style.backgroundColor=getRandomHexColor()}),1e3)},btnStart.addEventListener("click",changeColor),btnStop.addEventListener("click",clearTimeout(timeoutId));
+//# sourceMappingURL=01-color-switcher.7aaf1098.js.map

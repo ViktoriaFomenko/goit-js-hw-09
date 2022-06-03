@@ -4,10 +4,10 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const input = document.querySelector('#datetime-picker');
 const btnStart = document.querySelector('[data-start]');
-let timerDays = document.querySelector('span[data-days]');
-let timerHours = document.querySelector('span[data-hours]');
-let timerMinutes = document.querySelector('span[data-minutes]');
-let timerSeconds = document.querySelector('span[data-seconds]');
+// let timerDays = document.querySelector('span[data-days]');
+// let timerHours = document.querySelector('span[data-hours]');
+// let timerMinutes = document.querySelector('span[data-minutes]');
+// let timerSeconds = document.querySelector('span[data-seconds]');
 const currentDate = Date.now();
 
 const options = {
@@ -18,7 +18,7 @@ const options = {
   onClose(selectedDates) {
     console.log(selectedDates[0]);
     if (selectedDates[0] < currentDate) {
-      window.alert('Please choose a date in the future');
+      Notify.failure('Please choose a date in the future');
     } else {
       btnStart.disabled = false;
       btnStart.addEventListener('click', timer(selectedDates[0]));
@@ -48,16 +48,19 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-// const showTime = ({ days, hours, minutes, seconds }) => {
-
-// };
+const showTime = (days, hours, minutes, seconds) => {
+  (document.querySelector('span[data-days]').textContent = days),
+    (document.querySelector('span[data-hours]').textContent = hours),
+    (document.querySelector('span[data-minutes]').textContent = minutes),
+    (document.querySelector('span[data-seconds]').textContent = seconds);
+};
 
 const timer = selectedDate => {
   console.log('timer');
   setInterval(() => {
     const ms = selectedDate - new Date();
     result = convertMs(ms);
-    // showTime();
+    showTime();
   }, 1000);
 };
 

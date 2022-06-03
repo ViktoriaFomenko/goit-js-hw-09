@@ -18,7 +18,9 @@ const options = {
   onClose(selectedDates) {
     console.log(selectedDates[0]);
     if (selectedDates[0] < currentDate) {
-      Notify.failure('Please choose a date in the future');
+      Notify.failure('Please choose a date in the future', {
+        position: 'center-top',
+      });
     } else {
       btnStart.disabled = false;
       btnStart.addEventListener('click', timer(selectedDates[0]));
@@ -49,10 +51,10 @@ function convertMs(ms) {
 }
 
 const showTime = (days, hours, minutes, seconds) => {
-  (document.querySelector('span[data-days]').textContent = days),
-    (document.querySelector('span[data-hours]').textContent = hours),
-    (document.querySelector('span[data-minutes]').textContent = minutes),
-    (document.querySelector('span[data-seconds]').textContent = seconds);
+  document.querySelector('span[data-days]').textContent = days;
+  document.querySelector('span[data-hours]').textContent = hours;
+  document.querySelector('span[data-minutes]').textContent = minutes;
+  document.querySelector('span[data-seconds]').textContent = seconds;
 };
 
 const timer = selectedDate => {
@@ -60,7 +62,8 @@ const timer = selectedDate => {
   setInterval(() => {
     const ms = selectedDate - new Date();
     result = convertMs(ms);
-    showTime();
+    console.log(result);
+    showTime(result.days, result.hours, result.minutes, result.seconds);
   }, 1000);
 };
 

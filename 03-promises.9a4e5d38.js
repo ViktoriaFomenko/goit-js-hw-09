@@ -1,2 +1,0 @@
-document.querySelector("form"),document.getElementsByName("delay"),document.getElementsByName("step"),document.getElementsByClassName("amount"),document.getElementsByClassName("button");var e,t;(e=2,t=1500,new Promise(((o,m)=>{const s=Math.random()>.3;setTimeout((()=>{s&&o(`✅ Fulfilled promise ${e} in ${t}ms`),m(`❌ Rejected promise ${e} in ${t}ms`)}))}))).then((({position:e,delay:t})=>{console.log(`✅ Fulfilled promise ${e} in ${t}ms`)})).catch((({position:e,delay:t})=>{console.log(`❌ Rejected promise ${e} in ${t}ms`)}));
-//# sourceMappingURL=03-promises.9a4e5d38.js.map

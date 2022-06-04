@@ -54,7 +54,7 @@ const showTime = (days, hours, minutes, seconds) => {
 const timer = selectedDate => {
   setInterval(() => {
     const ms = selectedDate - new Date();
-    result = convertMs(ms);
+    let result = convertMs(ms);
     showTime(result.days, result.hours, result.minutes, result.seconds);
   }, 1000);
 };

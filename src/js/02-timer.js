@@ -52,9 +52,14 @@ const showTime = (days, hours, minutes, seconds) => {
 };
 
 const timer = selectedDate => {
-  setInterval(() => {
+  const intervalID = setInterval(() => {
     const ms = selectedDate - new Date();
     let result = convertMs(ms);
+    if (ms <= 0) {
+      showTime(0, 0, 0, 0);
+      clearInterval(intervalID);
+      return;
+    }
     showTime(result.days, result.hours, result.minutes, result.seconds);
   }, 1000);
 };

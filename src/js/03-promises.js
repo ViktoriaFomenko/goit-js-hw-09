@@ -23,10 +23,11 @@ const onSubmit = event => {
   const step = parseInt(formData.get('step'));
   const amount = parseInt(formData.get('amount'));
 
-  for (let position = 0; position < amount; position++) {
-    const promiseDelay = delay + step * position;
+  for (let i = 0; i < amount; i++) {
+    let position = i + 1;
+    const promiseDelay = delay + step * i;
 
-    createPromise(position + 1, promiseDelay)
+    createPromise(position, promiseDelay)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
         return position;
